@@ -1,3 +1,10 @@
+// This Mongoose model has one-to-one relationship with User model. 
+// It contains expiryDate field which value is set by adding config.jwtRefreshExpiration value above.
+// There are 2 static methods:
+// •	createToken: use uuid library for creating a random token and save new object into MongoDB database
+// •	verifyExpiration: compare expiryDate with current Date time to check the expiration
+
+
 const mongoose = require("mongoose");
 const config = require("../config/auth.config");
 const { v4: uuidv4 } = require('uuid');
