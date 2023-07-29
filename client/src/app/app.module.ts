@@ -16,7 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
-//import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

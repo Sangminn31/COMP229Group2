@@ -16,6 +16,7 @@
     <a
       class="badge badge-warning"
       routerLink="/products/{{ currentProduct.id }}"
+      *ngIf="showModeratorBoard || showAdminBoard"
     >
       Edit
     </a>

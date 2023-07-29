@@ -31,7 +31,7 @@
       </li>
     </ul>
 
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()">
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()" *ngIf="showModeratorBoard || showAdminBoard">
       Remove All
     </button>
   </div>

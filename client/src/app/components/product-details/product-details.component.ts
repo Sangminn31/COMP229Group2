@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StorageService } from 'src/app/_services/storage.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -20,15 +21,28 @@ export class ProductDetailsComponent implements OnInit {
 
   message = '';
 
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router, private storageService: StorageService) { }
 
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
       this.getProduct(this.route.snapshot.params["id"]);
+    }
+    this.isLoggedIn = this.storageService.isLoggedIn();
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
     }
   }
 
