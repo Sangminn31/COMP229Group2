@@ -30,7 +30,7 @@ const verifyToken = (req, res, next) => {
 
   if (!token) {
 
-    return res.status(403).send({ message: "No token provided!" });
+    return res.status(403).send({ message: "No token provided!!" });
 
   }
 

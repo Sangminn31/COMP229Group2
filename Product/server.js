@@ -72,7 +72,7 @@ app.use(
 
   cookieSession({
     name: "COMP229Group2-session",
-    secret: "COOKIE_SECRET", // should use as secret environment variable
+    secret: "COMP229Group2-secret-key", // should use as secret environment variable
     httpOnly: true
   })
 

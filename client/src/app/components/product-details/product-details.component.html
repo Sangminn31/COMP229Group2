@@ -1,6 +1,6 @@
 <div *ngIf="viewMode; else editable">
   <div *ngIf="currentProduct.id">
-    <h4>Product</h4>
+    <h4>Book Details</h4>
     <div>
       <label><strong>name:</strong></label> {{ currentProduct.name }}
     </div>
@@ -30,7 +30,7 @@
 
 <ng-template #editable>
   <div *ngIf="currentProduct.id" class="edit-form">
-    <h4>Product</h4>
+    <h4>Book Details</h4>
     <form>
       <div class="form-group">
         <label for="title">Name</label>
