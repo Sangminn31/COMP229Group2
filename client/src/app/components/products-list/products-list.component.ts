@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/_services/storage.service';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -16,10 +17,26 @@ export class ProductsListComponent implements OnInit {
   currentIndex = -1;
   name = '';
 
-  constructor(private productService: ProductService) { }
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
+
+
+  constructor(private productService: ProductService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.retrieveProducts();
+    this.isLoggedIn = this.storageService.isLoggedIn();
+ 
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.roles = user.roles;
+ 
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+    }
   }
 
   retrieveProducts(): void {
