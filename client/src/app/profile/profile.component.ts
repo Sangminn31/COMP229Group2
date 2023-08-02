@@ -1,6 +1,6 @@
 // Profile Component
 // This Component gets current User from Storage using StorageService and 
-// show information (username, token, email, roles).
+// show information (username, token, email, roles)..
 
 
 import { Component, OnInit } from '@angular/core';
